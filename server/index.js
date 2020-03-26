@@ -1,13 +1,14 @@
-const express = require('express')
-const getProducts = require('./getProducts')
-const getProductId = require('./getProducts')
+const express = require('express');
+const getProducts = require('./getProducts');
+const getProduct = require('./getProducts');
 
-let app = express()
+const app = express();
 
-app.use(express.json())
+app.use(express.json());
+
+const port = 8080;
 
 app.get('/api/products', getProducts)
+app.get(`/api/product/:id`, getProduct)
 
-app.get(`/api/product/:id`, getProductId)
-
-app.listen(8080, ()=> console.log(8080 + 'server is running'))
+app.listen(port, ()=> console.log(`Server is running on port: ${port}`))
